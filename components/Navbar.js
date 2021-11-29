@@ -1,14 +1,18 @@
 import Link from 'next/link';
 import styles from '@/styles/Navbar.module.css';
-import { Menu, Container, Button } from 'semantic-ui-react';
+import { Menu, Container, Button, Input } from 'semantic-ui-react';
+import Search from './Search';
 
 export default function Navbar() {
     return (
         <Menu inverted fixed='top'>
             <Container>
                 <Link href='/' passHref>
-                        <Menu.Item as='a' header>D-events</Menu.Item>
+                    <Menu.Item as='a' header>
+                        D-events
+                    </Menu.Item>
                 </Link>
+                <Search />
             </Container>
         </Menu>
 
