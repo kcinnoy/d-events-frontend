@@ -12,7 +12,18 @@ export default function Navbar() {
                         D-events
                     </Menu.Item>
                 </Link>
+                
                 <Search />
+                <Link href='/events' passHref>
+                    <Menu.Item as='a' header >
+                        Events
+                    </Menu.Item>
+                </Link>
+                <Link href='/events/add' passHref>
+                    <Menu.Item as='a' header >
+                        Add Event
+                    </Menu.Item>
+                </Link>
             </Container>
         </Menu>
 

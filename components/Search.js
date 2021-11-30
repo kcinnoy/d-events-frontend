@@ -1,7 +1,7 @@
 import styles from '@/styles/Search.module.css';
 import {useState} from 'react';
 import { useRouter } from 'next/router';
-import { Input, Form, Menu } from 'semantic-ui-react';
+import { Form, Menu } from 'semantic-ui-react';
 
 
 export default function Search() {

@@ -11,7 +11,7 @@ export default function Layout({title, keywords, description, children}) {
    
 
     return (
-        <div>
+        <div style={{marginTop: 20}}>
             <Head>
                 <title>{title}</title>
                 <meta name='description' content={description} />
