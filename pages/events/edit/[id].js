@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
+import Modal from '@/components/Modal';
 import { API_URL } from '@/config/index';
 import { Input, Form, Button, Icon } from 'semantic-ui-react';
 
@@ -24,9 +25,11 @@ export default function EditEventPage({ evt }) {
         evt.image ? evt.image.formats.thumbnail.url : null
     );
 
+    const [showModal, setShowModal] = useState(false)
+
     const router = useRouter();
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         //validation
@@ -147,11 +150,17 @@ export default function EditEventPage({ evt }) {
             )}
 
             <div style={{marginTop: 20}}>
-                <Button icon labelPosition='left'>
+            
+                <Button icon labelPosition='left' onClick={() => setShowModal(true)} >
                     <Icon name='image' />
-                    Set image
+                    Add Image
                 </Button>
+                {/* <Button>Show Modalx</Button> */}
             </div>
+
+            <Modal show={showModal} onClose={() => setShowModal(false)}>
+                IMAGE UPLOAD
+            </Modal>
         </Layout>
     );
 }

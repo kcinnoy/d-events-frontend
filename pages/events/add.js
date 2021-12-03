@@ -6,9 +6,7 @@ import Link from 'next/link';
 import Layout from '@/components/Layout';
 import { API_URL } from '@/config/index';
 import { Input, Form } from 'semantic-ui-react';
-//import SemanticDatepicker from 'react-semantic-ui-datepickers';
-//import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
-//import styles from '@/styles/Form.modules.css';
+
 
 export default function AddEventPage() {
     const [values, setValues] = useState({
