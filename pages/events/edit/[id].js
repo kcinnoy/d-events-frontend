@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import Modal from '@/components/Modal';
+import ImageUpload from '@/components/ImageUpload';
 import { API_URL } from '@/config/index';
 import { Input, Form, Button, Icon } from 'semantic-ui-react';
 
@@ -59,6 +60,10 @@ export default function EditEventPage({ evt }) {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value });
     };
+
+    const imageUploaded = e => {
+        console.log('ImageUploaded')
+    }
 
     return (
         <Layout title='Add New Event'>
@@ -158,8 +163,10 @@ export default function EditEventPage({ evt }) {
                 {/* <Button>Show Modalx</Button> */}
             </div>
 
-            <Modal show={showModal} onClose={() => setShowModal(false)}>
-                IMAGE UPLOAD
+            <Modal show={showModal} onClose={() => setShowModal(false)} >
+            <ImageUpload evtID={evt.id} imageUploaded={imageUploaded}/>
+
+                    
             </Modal>
         </Layout>
     );
