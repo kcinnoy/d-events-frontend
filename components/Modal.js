@@ -14,7 +14,7 @@ export default function Modal({show, onClose, children, title}) {
     useEffect(() => setIsBrowser(true));
 
    const modalContent = show ? (
-       console.log(show),
+       //console.log(show),
         <Modalx
             onClose={handleClose}
             // onOpen={() => setOpen(true)}
@@ -42,7 +42,7 @@ export default function Modal({show, onClose, children, title}) {
                 />
             </Modalx.Actions>
         </Modalx>
-    ) : console.log(show);
+    ) : null;
 
 
 //     const modalContent = show ? (

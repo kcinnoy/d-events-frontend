@@ -56,13 +56,17 @@ export default function EditEventPage({ evt }) {
         }
     };
 
-    const handleInputChange = e => {
+    const handleInputChange = async e => {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value });
     };
 
-    const imageUploaded = e => {
-        console.log('ImageUploaded')
+    const imageUploaded = async e => {
+        const res = await fetch(`${API_URL}/events/${evt.id}`)
+        const data = await res.json()
+        setImagePreview(data.image.formats.thumbnail.url)
+        setShowModal(false)
+        
     }
 
     return (
@@ -160,11 +164,10 @@ export default function EditEventPage({ evt }) {
                     <Icon name='image' />
                     Add Image
                 </Button>
-                {/* <Button>Show Modalx</Button> */}
             </div>
 
             <Modal show={showModal} onClose={() => setShowModal(false)} >
-            <ImageUpload evtID={evt.id} imageUploaded={imageUploaded}/>
+            <ImageUpload evtId={evt.id} imageUploaded={imageUploaded}/>
 
                     
             </Modal>
