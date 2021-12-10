@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from '@/styles/Navbar.module.css';
-import { Menu, Container, Button, Input } from 'semantic-ui-react';
+import { Menu, Container, Button, Input, Icon } from 'semantic-ui-react';
 import Search from './Search';
 
 export default function Navbar() {
@@ -22,6 +22,12 @@ export default function Navbar() {
                 <Link href='/events/add' passHref>
                     <Menu.Item as='a' header >
                         Add Event
+                    </Menu.Item>
+                </Link>
+                <Link href='/account/login' passHref>
+                    <Menu.Item as='a' header >
+                    <Icon name='user circle' />
+                        Login
                     </Menu.Item>
                 </Link>
             </Container>
