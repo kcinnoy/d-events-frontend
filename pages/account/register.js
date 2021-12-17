@@ -4,7 +4,8 @@ import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import { Input, Form, Card, Icon, Container, Grid } from 'semantic-ui-react';
-import { auto } from '@popperjs/core';
+import AuthContext from '@/context/AuthContext';
+
 
 export default function RegisterPage() {
     const [username, setUsername] = useState('');
@@ -12,14 +13,17 @@ export default function RegisterPage() {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
+    const {register, error} = useContext(AuthContext)
+
     const handleSubmit = e => {
         e.preventDefault();
 
         if (password !== passwordConfirm) {
             toast.error('Passwords do not match!')
+            return
         }
-        console.log({username, email, password})
-    };
+        register({username, email, password})
+    }
 
     return (
         <Layout title='User Registration'>

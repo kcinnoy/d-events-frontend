@@ -1,9 +1,13 @@
 import Link from 'next/link';
+import {useContext} from 'react';
 import styles from '@/styles/Navbar.module.css';
 import { Menu, Container, Button, Input, Icon } from 'semantic-ui-react';
 import Search from './Search';
+import AuthContext from '@/context/AuthContext';
 
 export default function Navbar() {
+    const {user, logout} = useContext(AuthContext)
+
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -19,17 +23,35 @@ export default function Navbar() {
                         Events
                     </Menu.Item>
                 </Link>
-                <Link href='/events/add' passHref>
-                    <Menu.Item as='a' header >
-                        Add Event
-                    </Menu.Item>
-                </Link>
-                <Link href='/account/login' passHref>
+                {user ? (
+                    <>
+                        <Link href='/events/add' passHref>
+                            <Menu.Item as='a' header >
+                                Add Event
+                            </Menu.Item>
+                        </Link>
+                        <Link href='/account/dashboard' passHref>
+                            <Menu.Item as='a' header >
+                                Dashboard
+                            </Menu.Item>
+                        </Link>
+                            <Menu.Item 
+                                onClick={() => logout()}
+                            >
+                                <Icon name='user circle' />
+                                Logout
+                            </Menu.Item>
+                    </> 
+               ) : (<>
+                 <Link href='/account/login' passHref>
                     <Menu.Item as='a' header >
                     <Icon name='user circle' />
                         Login
                     </Menu.Item>
                 </Link>
+                
+               </>)}
+               
             </Container>
         </Menu>
 
