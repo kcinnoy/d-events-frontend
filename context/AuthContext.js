@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { NEXT_URL } from '@/config/index'
+import { API_URL, NEXT_URL } from '@/config/index'
 
 const AuthContext = createContext()
 
@@ -18,8 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login user
   const login = async ({ email: identifier, password }) => {
-      console.log(password)
-    const res = await fetch(`${NEXT_URL}/api/login`, {
+    const res = await fetch(`${API_URL}/auth/local`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
