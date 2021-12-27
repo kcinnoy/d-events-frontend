@@ -4,19 +4,22 @@ import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import AuthContext from '@/context/AuthContext';
-import { Input, Form, Card, Icon, Container, Grid } from 'semantic-ui-react';
+import { Input, Form, Card, Icon } from 'semantic-ui-react';
 
 
 export default function LoginPage() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const {login, error} = useContext(AuthContext)
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        login({email, password})
-    };
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+  
+    const { login, error } = useContext(AuthContext)
+  
+    useEffect(() => error && toast.error(error))
+  
+    const handleSubmit = (e) => {
+        console.log('submit me')
+      e.preventDefault()
+      login({ email, password })
+    }
 
     return (
         <Layout title='User Login'>
@@ -60,3 +63,7 @@ export default function LoginPage() {
         </Layout>
     );
 }
+
+
+
+
