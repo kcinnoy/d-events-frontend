@@ -16,14 +16,14 @@ export default function LoginPage() {
     useEffect(() => error && toast.error(error))
   
     const handleSubmit = (e) => {
-        console.log('submit me')
+        console.log('form submitted')
       e.preventDefault()
       login({ email, password })
     }
 
     return (
         <Layout title='User Login'>
-            <Card ui centered style={{marginTop: 30}}>
+            <Card centered style={{marginTop: 30}}>
                 <Card.Content>
                     <Card.Header>
                         <Icon name='user circle' />
